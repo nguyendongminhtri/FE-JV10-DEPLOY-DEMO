@@ -1,0 +1,17 @@
+<div class="topnav" id="myTopnav">
+  <a routerLink="/" class="active">Home</a>
+  <div *ngIf="!checkLogin">
+    <a routerLink="register">Register</a>
+    <a routerLink="login">Login</a>
+  </div>
+  <div *ngIf="checkLogin">
+    <a routerLink="login">{{name}}</a>
+    <a routerLink="login"><img src="{{avatar}}" width="40" height="40" style="border-radius: 50%"></a>
+    <a (click)="logOut()">Log Out <mat-icon color="accent">logout</mat-icon></a>
+  </div>
+
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
