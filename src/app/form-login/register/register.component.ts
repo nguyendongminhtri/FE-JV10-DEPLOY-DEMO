@@ -33,9 +33,9 @@ export class RegisterComponent {
     console.log("this signUpForm ---->", this.signUpForm);
     this.authService.signUp(this.signUpForm).subscribe(data =>{
       console.log('data ---->',data);
-      if(data.message=='no_user'){
+      if(data.message=='nouser'){
         this.status = 'The username is existed! Please try again!'
-      } else if(data.message == 'no_email') {
+      } else if(data.message == 'noemail') {
         this.status = 'The email is existed! Please try again!'
       } else if(data.message == 'yes'){
         this.status = "Create account success!"
