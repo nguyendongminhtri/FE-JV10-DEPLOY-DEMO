@@ -13,8 +13,21 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './form-login/login/login.component';
+
+import {environment} from "../environments/environment.development";
+import { UploadAvatarComponent } from './upload/upload-avatar/upload-avatar.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { ChildInputComponent } from './input-output/@Input/child-input/child-input.component';
+import { DadInputComponent } from './input-output/@Input/dad-input/dad-input.component';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import { ChildOutputComponent } from './input-output/@output/child-output/child-output.component';
+import { DadOutputComponent } from './input-output/@output/dad-output/dad-output.component';
+import { ChangeAvatarComponent } from './form-login/change-avatar/change-avatar.component';
+import {AuthInterceptor} from "./service/auth.interceptor";
+
 
 @NgModule({
   declarations: [
@@ -23,7 +36,13 @@ import { LoginComponent } from './form-login/login/login.component';
     FooterComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    UploadAvatarComponent,
+    ChildInputComponent,
+    DadInputComponent,
+    ChildOutputComponent,
+    DadOutputComponent,
+    ChangeAvatarComponent
   ],
   imports: [
     HttpClientModule,
@@ -35,9 +54,14 @@ import { LoginComponent } from './form-login/login/login.component';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

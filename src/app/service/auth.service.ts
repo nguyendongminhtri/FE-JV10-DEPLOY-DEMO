@@ -5,16 +5,21 @@ import {SignUpForm} from "../model/SignUpForm";
 import {Observable} from "rxjs";
 import {SignInForm} from "../model/SignInForm";
 import {JwtResponse} from "../model/JwtResponse";
+import {ChangeAvatar} from "../model/ChangeAvatar";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  //API LOCAL
 // private API_SIGNUP = environment.API_LOCAL+'signup';
 // private API_SIGNIN = environment.API_LOCAL+'signin';
+// private API_UPDATE_AVATAR = environment.API_LOCAL+'change-avatar'
 
+  //API SERVER
 private API_SIGNUP = environment.API_SERVER+'signup';
 private API_SIGNIN = environment.API_SERVER+'signin';
+private API_UPDATE_AVATAR = environment.API_LOCAL + 'change-avatar';
   constructor(private httpClient: HttpClient) { }
   signUp(signUpForm: SignUpForm): Observable<any>{
     console.log('goi service --->', signUpForm)
@@ -22,5 +27,8 @@ private API_SIGNIN = environment.API_SERVER+'signin';
   }
   signIn(signInForm: SignInForm): Observable<JwtResponse>{
     return this.httpClient.post<JwtResponse>(this.API_SIGNIN, signInForm);
+  }
+  editAvatar(changeAvatar: ChangeAvatar): Observable<any>{
+  return this.httpClient.put<any>(this.API_UPDATE_AVATAR, changeAvatar);
   }
 }
