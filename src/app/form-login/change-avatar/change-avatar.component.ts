@@ -11,6 +11,7 @@ import {TokenService} from "../../service/token.service";
 export class ChangeAvatarComponent {
 form: any = {}
   changeAvatar?: ChangeAvatar;
+status = 'Update Your Avatar!'
 constructor(private authService: AuthService,
             private tokenService: TokenService) {
 }
@@ -19,8 +20,13 @@ constructor(private authService: AuthService,
       this.form.avatar
     )
     this.authService.editAvatar(this.changeAvatar).subscribe(data =>{
-      this.tokenService.setAvatar(this.form.avatar);
-      window.location.reload();
+      console.log('data -->',data)
+      if(data.message == 'no'){
+        this.status = 'Update Failed! Please choose upload file!'
+      } else {
+        this.tokenService.setAvatar(this.form.avatar);
+        window.location.reload();
+      }
     })
 
   }
