@@ -19,7 +19,7 @@ export class AuthService {
   //API SERVER
 private API_SIGNUP = environment.API_SERVER+'signup';
 private API_SIGNIN = environment.API_SERVER+'signin';
-private API_UPDATE_AVATAR = environment.API_LOCAL + 'change-avatar';
+private API_UPDATE_AVATAR = environment.API_SERVER + 'change-avatar';
   constructor(private httpClient: HttpClient) { }
   signUp(signUpForm: SignUpForm): Observable<any>{
     console.log('goi service --->', signUpForm)
