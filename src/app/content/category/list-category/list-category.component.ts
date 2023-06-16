@@ -6,6 +6,8 @@ import {Category} from "../../../model/Category";
 import {CategoryService} from "../../../service/category.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
+import {UpdateCategoryComponent} from "../update-category/update-category.component";
+import {DeleteCategoryComponent} from "../delete-category/delete-category.component";
 
 @Component({
   selector: 'app-list-category',
@@ -21,24 +23,62 @@ export class ListCategoryComponent implements OnInit {
   }
 
   listCategory: Category[] = [];
-  displayedColumns: string[] = ['id', 'name', 'avatar'];
+  displayedColumns: string[] = ['id', 'name', 'avatar','edit','delete'];
   dataSource: any;
-  openDialog() {
+  openDialogCreate() {
     const dialogRef = this.dialog.open(CreateCategoryComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('result ---->', result);
+
       if(result||result==undefined){
         this.categoryService.getListService().subscribe(data =>{
           this.listCategory = data;
-          console.log('list Category ----->',data)
+
           this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-          console.log('list Category ----->',data)
+
           this.dataSource.paginator = this.paginator;
         })
       }
     });
   }
+  openDialogUpdate(id: any) {
+    const dialogRef = this.dialog.open(UpdateCategoryComponent, {
+      data :{
+        dataKey: id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result||result==undefined){
+        this.categoryService.getListService().subscribe(data =>{
+          this.listCategory = data;
+
+          this.dataSource = new MatTableDataSource<Category>(this.listCategory);
+
+          this.dataSource.paginator = this.paginator;
+        })
+      }
+    });
+  }
+
+  openDialogDelete(id: any) {
+    const dialogRef = this.dialog.open(DeleteCategoryComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.categoryService.deleteCategory(id).subscribe(()=>{
+          this.categoryService.getListService().subscribe(data =>{
+            this.listCategory = data;
+
+            this.dataSource = new MatTableDataSource<Category>(this.listCategory);
+
+            this.dataSource.paginator = this.paginator;
+          })
+        })
+      }
+    });
+  }
+
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -47,7 +87,6 @@ export class ListCategoryComponent implements OnInit {
     this.categoryService.getListService().subscribe(data =>{
       this.listCategory = data;
       this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-      console.log('list Category ----->',data)
       this.dataSource.paginator = this.paginator;
     })
   }
