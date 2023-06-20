@@ -9,7 +9,7 @@
         </button>
         <div class="row">
           <div class="column" *ngFor="let song of listSong">
-            <div class="card" [routerLink]="['/detail-song/', song.id]">
+            <div class="card" >
               <img src="{{song.avatar}}" alt="">
               <b style="color: #f802b3; font-size: 1.5vw">{{song.name}}</b>
             </div>

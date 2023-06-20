@@ -7,9 +7,7 @@ import {DadInputComponent} from "./input-output/@Input/dad-input/dad-input.compo
 import {DadOutputComponent} from "./input-output/@output/dad-output/dad-output.component";
 import {ChangeAvatarComponent} from "./form-login/change-avatar/change-avatar.component";
 import {ListCategoryComponent} from "./content/category/list-category/list-category.component";
-import {UpdateCategoryComponent} from "./content/category/update-category/update-category.component";
 import {PageSongComponent} from "./content/song/page-song/page-song.component";
-import {DetailSongComponent} from "./content/song/detail-song/detail-song.component";
 import {PageSingerComponent} from "./content/singer/page-singer/page-singer.component";
 
 const routes: Routes = [
@@ -21,7 +19,6 @@ const routes: Routes = [
   {path: 'change-avatar', component: ChangeAvatarComponent},
   {path: 'category', component: ListCategoryComponent},
   {path: 'page-song', component: PageSongComponent},
-  {path: 'detail-song/:id', component: DetailSongComponent},
   {path: 'page-singer', component: PageSingerComponent}
   // {path: 'update-category/:id', component: UpdateCategoryComponent},
 ];

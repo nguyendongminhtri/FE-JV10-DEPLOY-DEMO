@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CreateCategoryComponent} from "../../category/create-category/create-category.component";
-import {MatTableDataSource} from "@angular/material/table";
-import {Category} from "../../../model/Category";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateSongComponent} from "../create-song/create-song.component";
 import {PageEvent} from "@angular/material/paginator";
