@@ -33,9 +33,7 @@ export class ListCategoryComponent implements OnInit {
       if(result||result==undefined){
         this.categoryService.getListService().subscribe(data =>{
           this.listCategory = data;
-
           this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-
           this.dataSource.paginator = this.paginator;
         })
       }

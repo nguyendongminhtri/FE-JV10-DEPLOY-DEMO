@@ -35,6 +35,19 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { UpdateCategoryComponent } from './content/category/update-category/update-category.component';
 import { DeleteCategoryComponent } from './content/category/delete-category/delete-category.component';
 import { PageCategoryComponent } from './content/category/page-category/page-category.component';
+import { UploadFileComponent } from './upload/upload-file/upload-file.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { PageSongComponent } from './content/song/page-song/page-song.component';
+import { CreateSongComponent } from './content/song/create-song/create-song.component';
+import {MatSelectModule} from "@angular/material/select";
+import { DetailSongComponent } from './content/song/detail-song/detail-song.component';
+import {NgxAudioPlayerModule} from "ngx-audio-player";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { PageSingerComponent } from './content/singer/page-singer/page-singer.component';
+import { CreateSingerComponent } from './content/singer/create-singer/create-singer.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+
 
 
 @NgModule({
@@ -55,7 +68,13 @@ import { PageCategoryComponent } from './content/category/page-category/page-cat
     CreateCategoryComponent,
     UpdateCategoryComponent,
     DeleteCategoryComponent,
-    PageCategoryComponent
+    PageCategoryComponent,
+    UploadFileComponent,
+    PageSongComponent,
+    CreateSongComponent,
+    DetailSongComponent,
+    PageSingerComponent,
+    CreateSingerComponent
   ],
   imports: [
     HttpClientModule,
@@ -73,7 +92,13 @@ import { PageCategoryComponent } from './content/category/page-category/page-cat
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatProgressSpinnerModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+    // NgxAudioPlayerModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
+      <mat-card style="margin: 0">
+        <mat-dialog-content class="mat-typography">
+          <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid&&createSinger()">
+            <mat-error class="alert alert-primary">{{status}}</mat-error>
+            <mat-form-field appearance="outline" style="width: 350px">
+              <mat-label>Name:</mat-label>
+              <input name="name" #name="ngModel" [(ngModel)]="form.name" matInput placeholder="Name" required>
+              <mat-icon color="accent" matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
+            </mat-form-field>
+            <br>
+            <!--          lyrics-->
+            <mat-form-field appearance="outline" style="width: 350px">
+              <mat-label>Name:</mat-label>
+              <textarea name="description" #description="ngModel" [(ngModel)]="form.description" matInput placeholder="Name" required></textarea>
+              <mat-icon color="accent" matSuffix>lyrics</mat-icon>
+              <mat-error *ngIf="description.hasError('required')">The lyrics is required!</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" style="width: 350px">
+              <mat-label>Choose a date</mat-label>
+              <input name="birthDay" [(ngModel)]="form.birthDay" matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <app-upload-avatar (giveURLtoCreate)="onUploadAvatar($event)"></app-upload-avatar>
+            <br>
+            <button  type="submit" mat-stroked-button color="accent"
+                     class="mat-button-toggle-group btn-outline-primary">
+              Create Song
+              <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+            </button>
+          </form>
+        </mat-dialog-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

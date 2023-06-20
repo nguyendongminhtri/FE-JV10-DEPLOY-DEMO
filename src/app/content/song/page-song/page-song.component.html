@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="margin-top: 70px; margin-bottom: 20px">
+      <mat-card style="margin: 0">
+        <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"
+                class="mat-button-toggle-group btn-outline-primary">
+          Create Category
+          <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+        </button>
+        <div class="row">
+          <div class="column" *ngFor="let song of listSong">
+            <div class="card" [routerLink]="['/detail-song/', song.id]">
+              <img src="{{song.avatar}}" alt="">
+              <b style="color: #f802b3; font-size: 1.5vw">{{song.name}}</b>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <mat-paginator [length]="totalElements"
+                     (page)="nextPage($event)"
+                     [pageSizeOptions]="[3, 6, 9, 90]"
+                     aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+

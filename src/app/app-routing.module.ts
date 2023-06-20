@@ -8,6 +8,9 @@ import {DadOutputComponent} from "./input-output/@output/dad-output/dad-output.c
 import {ChangeAvatarComponent} from "./form-login/change-avatar/change-avatar.component";
 import {ListCategoryComponent} from "./content/category/list-category/list-category.component";
 import {UpdateCategoryComponent} from "./content/category/update-category/update-category.component";
+import {PageSongComponent} from "./content/song/page-song/page-song.component";
+import {DetailSongComponent} from "./content/song/detail-song/detail-song.component";
+import {PageSingerComponent} from "./content/singer/page-singer/page-singer.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +19,10 @@ const routes: Routes = [
   {path: 'input', component: DadInputComponent},
   {path: 'output', component: DadOutputComponent},
   {path: 'change-avatar', component: ChangeAvatarComponent},
-  {path: 'category', component: ListCategoryComponent}
+  {path: 'category', component: ListCategoryComponent},
+  {path: 'page-song', component: PageSongComponent},
+  {path: 'detail-song/:id', component: DetailSongComponent},
+  {path: 'page-singer', component: PageSingerComponent}
   // {path: 'update-category/:id', component: UpdateCategoryComponent},
 ];
 
