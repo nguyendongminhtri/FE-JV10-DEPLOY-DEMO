@@ -41,7 +41,6 @@ import { PageSongComponent } from './content/song/page-song/page-song.component'
 import { CreateSongComponent } from './content/song/create-song/create-song.component';
 import {MatSelectModule} from "@angular/material/select";
 import { DetailSongComponent } from './content/song/detail-song/detail-song.component';
-import {NgxAudioPlayerModule} from "ngx-audio-player";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { PageSingerComponent } from './content/singer/page-singer/page-singer.component';
 import { CreateSingerComponent } from './content/singer/create-singer/create-singer.component';
@@ -98,7 +97,6 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule
-    // NgxAudioPlayerModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
