@@ -45,6 +45,7 @@ import { PageSingerComponent } from './content/singer/page-singer/page-singer.co
 import { CreateSingerComponent } from './content/singer/create-singer/create-singer.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {CheckLoginGuard} from "./service/CheckLoginGuard";
 
 
 
@@ -97,7 +98,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatNativeDateModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    CheckLoginGuard
   ],
   bootstrap: [AppComponent]
 })

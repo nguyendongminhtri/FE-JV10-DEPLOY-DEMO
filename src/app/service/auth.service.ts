@@ -31,4 +31,11 @@ private API_UPDATE_AVATAR = environment.API_SERVER + 'change-avatar';
   editAvatar(changeAvatar: ChangeAvatar): Observable<any>{
   return this.httpClient.put<any>(this.API_UPDATE_AVATAR, changeAvatar);
   }
+  checkRegister = false;
+  setRegister(status: boolean){
+    this.checkRegister = status;
+  }
+  getRegister(): boolean{
+    return this.checkRegister;
+  }
 }

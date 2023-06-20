@@ -9,11 +9,12 @@ import {ChangeAvatarComponent} from "./form-login/change-avatar/change-avatar.co
 import {ListCategoryComponent} from "./content/category/list-category/list-category.component";
 import {PageSongComponent} from "./content/song/page-song/page-song.component";
 import {PageSingerComponent} from "./content/singer/page-singer/page-singer.component";
+import {CheckLoginGuard} from "./service/CheckLoginGuard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [CheckLoginGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [CheckLoginGuard]},
   {path: 'input', component: DadInputComponent},
   {path: 'output', component: DadOutputComponent},
   {path: 'change-avatar', component: ChangeAvatarComponent},

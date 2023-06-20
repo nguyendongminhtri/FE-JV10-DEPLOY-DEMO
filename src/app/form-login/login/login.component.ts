@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
 import {TokenService} from "../../service/token.service";
 import {SignInForm} from "../../model/SignInForm";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 hide = true;
 form:any = {};
 signInForm?: SignInForm;
@@ -43,5 +43,11 @@ constructor(private authService: AuthService,
         })
       }
     })
+  }
+
+  ngOnInit(): void {
+  if(this.authService.getRegister()){
+    this.status = 'Register success!'
+  }
   }
 }

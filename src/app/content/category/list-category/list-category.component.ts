@@ -16,7 +16,7 @@ import {LoginComponent} from "../../../form-login/login/login.component";
   styleUrls: ['./list-category.component.css']
 })
 export class ListCategoryComponent implements OnInit {
-  checkUserLogin = false;
+  checkUserAdmin = false;
 
   constructor(public dialog: MatDialog,
               private tokenService: TokenService,
@@ -81,11 +81,15 @@ export class ListCategoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
+      console.log('role ---->', this.tokenService.getRole())
+      if(JSON.stringify(this.tokenService.getRole())== JSON.stringify(['ADMIN'])){
+        this.checkUserAdmin = true;
+      }
      //  console.log('role -->', this.tokenService.getRole())
      // if(JSON.stringify(this.tokenService.getRole())==JSON.stringify(['ADMIN'])){
      //   this.checkUserAdmin = true;
      // }
-    this.checkUserLogin = true;
+    // this.checkUserLogin = true;
     }
     this.categoryService.getListService().subscribe(data =>{
       this.listCategory = data;

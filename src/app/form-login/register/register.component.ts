@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {SignUpForm} from "../../model/SignUpForm";
 import {FormControl, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent {
     Validators.email
   ]);
   hide = true;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -38,7 +40,9 @@ export class RegisterComponent {
       } else if(data.message == 'noemail') {
         this.status = 'The email is existed! Please try again!'
       } else if(data.message == 'yes'){
-        this.status = "Create account success!"
+        // this.status = "Create account success!"
+        this.authService.setRegister(true);
+        this.router.navigate(['login']);
       }
     })
   }
