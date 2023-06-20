@@ -8,6 +8,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {UpdateCategoryComponent} from "../update-category/update-category.component";
 import {DeleteCategoryComponent} from "../delete-category/delete-category.component";
+import {LoginComponent} from "../../../form-login/login/login.component";
 
 @Component({
   selector: 'app-list-category',
@@ -80,7 +81,11 @@ export class ListCategoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
-      this.checkUserLogin = true;
+     //  console.log('role -->', this.tokenService.getRole())
+     // if(JSON.stringify(this.tokenService.getRole())==JSON.stringify(['ADMIN'])){
+     //   this.checkUserAdmin = true;
+     // }
+    this.checkUserLogin = true;
     }
     this.categoryService.getListService().subscribe(data =>{
       this.listCategory = data;

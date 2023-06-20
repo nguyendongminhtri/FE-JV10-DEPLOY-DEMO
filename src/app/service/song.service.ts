@@ -9,7 +9,8 @@ import {Observable} from "rxjs";
 })
 export class SongService {
 //API LOCAL
-  private API_SONG = environment.API_LOCAL + 'song';
+//   private API_SONG = environment.API_LOCAL + 'song';
+  private API_SONG = environment.API_SERVER + 'song';
   constructor(private httpClient: HttpClient) { }
   createSongService(song: Song): Observable<any>{
     return this.httpClient.post(this.API_SONG, song);
